@@ -11,6 +11,7 @@
 
 #include <ranges>
 #include <vector>
+#include <utility>
 
 using namespace std;
 
@@ -31,7 +32,7 @@ auto split_range(Cont cont, int n){
 
         auto elem = ranges::take_view(ranges::drop_view(cont,i*n),n);
         temp = Cont(elem.begin(),elem.end());
-        v.push_back(temp);
+        v.push_back(std::move(temp));
         
     }
     return v;
