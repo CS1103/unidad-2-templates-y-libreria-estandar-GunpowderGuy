@@ -25,11 +25,15 @@ void unpack(Args.. args){
 template<typename Cont>
 auto split_range(Cont cont, int n){
     std::vector<Cont> v;
+    Cont temp;
 
     for(auto i : ranges::iota_view(0,n+1)){
-        auto dummy = ranges::take_view(ranges::drop_view(cont,i*n),n);
+
+        auto elem = ranges::take_view(ranges::drop_view(cont,i*n),n);
+        temp = Cont(elem.begin(),elem.end());
+        v.push_back(temp);
+        
     }
-    
     return v;
 }
 
