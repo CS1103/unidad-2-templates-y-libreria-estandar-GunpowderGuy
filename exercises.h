@@ -27,7 +27,13 @@ void repeat(Container& container,std::size_t n){
 
 template <typename T>
 void repeat(forward_list<T>& container,std::size_t n){
-
+    std::vector<T> temp(container.begin(),container.end());
+    auto index = container.begin();
+    
+    for (std::size_t i = 0; i < n; i++){
+        container.insert_after(index,temp.begin(),temp.end());
+        index++;
+    }
 }
 
 template<typename T>
