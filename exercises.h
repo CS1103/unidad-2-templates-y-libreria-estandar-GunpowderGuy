@@ -12,6 +12,7 @@
 #include <ranges>
 #include <vector>
 #include <utility>
+#include <forward_list> 
 
 using namespace std;
 
@@ -24,8 +25,13 @@ void repeat(Container& container,std::size_t n){
   }
 }
 
+template <typename T>
+void repeat(forward_list<T>& container,std::size_t n){
+
+}
+
 template<typename T>
-auto sumar_rango(const T &conta, const T &contb){
+auto sum_range(const T &conta, const T &contb){
     T cont1 = conta;
     T cont2 = contb;
 
@@ -34,16 +40,18 @@ auto sumar_rango(const T &conta, const T &contb){
     int max = 0;
 
     if(tamannno1 > tamanno2){
-        cont2 = repeat(cont2,tamannno1);
+        repeat(cont2,tamannno1);
     }
     else if(tamanno2 > tamannno1) {
-        cont1 = repeat(cont1,tamanno2);
+        repeat(cont1,tamanno2);
     }
 
-    vector result;
+
+    using inner = T::value_type;
+    vector<inner> result;
 
     for(auto elem : cont1 ){
-        result.push_back(eleme);    
+        result.push_back(elem);    
     }
     
     int cont = 0;
