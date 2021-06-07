@@ -10,13 +10,12 @@
 #include <algorithm>
 
 #include <ranges>
-#include <vector>
 #include <utility>
 #include <forward_list> 
 
 using namespace std;
 
-template <class Container>
+template <typename Container>
 void repeat(Container& container,std::size_t n){
   std::vector<typename Container::value_type> temp(container.begin(),container.end());
   for (std::size_t i = 0; i < n; i++)
