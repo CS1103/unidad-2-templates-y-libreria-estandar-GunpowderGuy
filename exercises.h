@@ -60,8 +60,8 @@ auto sum_range(const T &conta, const T &contb){
     }
     
     int cont = 0;
-    for(auto elem : result){
-        result[cont] = result[cont] + elem;
+    for(auto elem : cont2 ){
+        result.at(cont) = result.at(cont) + elem;
         cont++;
     }
     
