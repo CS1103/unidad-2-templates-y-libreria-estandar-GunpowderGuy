@@ -9,9 +9,12 @@
 #include <iterator>
 #include <algorithm>
 
-#include <ranges>
+//#include <ranges>
 #include <utility>
 #include <forward_list> 
+
+#include <initializer_list>
+		
 
 using namespace std;
 
@@ -68,6 +71,7 @@ auto sum_range(const T &conta, const T &contb){
     return result;
 }
 
+/*
 // me ayudo zero9178#6333
 template <typename Cont>
 auto split_range(Cont& cont,int n) {
@@ -79,5 +83,57 @@ auto split_range(Cont& cont,int n) {
              return std::ranges::drop_view(cont,index * n) | std::ranges::views::take(n);
          });
 }
+*/
+
+template<typename Cont, typename T>
+vector<T> delete_range(Cont cont, initializer_list<T> ini){
+    vector<T> result;
+    
+    for(auto elem : cont){
+        if(count(ini.begin(),ini.end(),elem) == 0){
+            result.push_back(elem);    
+        }
+    }
+    return result;
+}
+
+template<typename Cont, typename T>
+vector<T> delete_range(Cont cont, T excl){
+    return delete_range(cont, {excl});
+}
+
+template<typename Cont>
+auto delete_duplicated(Cont cont){
+    using T = Cont::value_type;
+    vector<T> result;
+    
+    for(auto elem : cont){
+        if(count(result.begin(),result.end(),elem) == 0){
+            result.push_back(elem);    
+        }
+    }
+    return result;
+}
+
+template<typename Cont, typename ...Args> //(, ...)
+auto zip(Args ...args){
+   int sizez; 
+
+    using T = Cont::value_type;
+
+    vector<vector<T>> result;
+    sizez = cont.size();
+    
+    for(int i = 0; i < sizez; i++){
+    vector<T> temp;
+        temp.push_back(cont.at(i))
+        (temp.push_back(args.at(i)), ...);
+
+        result.push_back(temp);
+    }
+     
+    return result;
+}
+
 
 #endif //POO2_UNIT2_WEEK_7_2020_2_EXERCISES_H

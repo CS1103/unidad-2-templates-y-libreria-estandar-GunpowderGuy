@@ -13,17 +13,7 @@ using namespace std;
 TEST_CASE("Problema #11") {
     stringstream os;
 
-    list<int> l1 = { 11, 12, 13 };
-    list<int> l2 = { 21, 22, 23 };
-    list<int> l3 = { 31, 32, 33 };
-    auto r1 = zip(l1, l2, l3);
-    for (const auto& row : r1) {
-        os << "[";
-        for (const auto& value : row)
-            os << value << " ";
-        os << "]";
-    }
-    REQUIRE(os.str() == "[11 21 31 ][12 22 32 ][13 23 33 ]");
+ 
 
     os.str(string());
     vector<int> v1 = { 11, 12, 13, 14, 15 };
